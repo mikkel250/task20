@@ -10,11 +10,23 @@ var usersRouter = require('./routes/users');
 var app = express();
 var test = require('./routes/test');
 
+const bodyParser = require('body-parser');
+// add & configure middleware
+app.use(bodyParser.urlencoded({ extended: true })); // use body-parser middleware to parse urls
+app.use(bodyParser.json()); // use body-parser middleware to parse JSON
+
+const mongoose = require("mongoose");
+
 app.use('/test', test); 
 
+// add the routers for CRUD of tasks, users
+require('./routes/task.routes.js')(app);
+app.use('./')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -22,6 +34,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// INFO ON ROUTERS -- COULD JUST USE THE STANDARD METHOD AS WELL
+// https://scotch.io/tutorials/learn-to-use-the-new-router-in-expressjs-4
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
