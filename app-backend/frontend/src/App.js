@@ -1,5 +1,5 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+//import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -15,11 +15,14 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Tasks</h1>
-        {this.state.tasks.map(test => 
+        {this.state.tasks.map(test =>
           <div key={test._id}> {test.title} </div>
         )}
+        <fieldset>
+          <label>Create new task</label>
+        </fieldset>
       </div>
-    )
+    );
   }
 }
 
