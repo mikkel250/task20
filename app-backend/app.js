@@ -3,25 +3,28 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const app = express();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
-var test = require('./routes/test');
+
+var test = require('./routes/test.js');
 
 const bodyParser = require('body-parser');
 // add & configure middleware
-app.use(bodyParser.urlencoded({ extended: true })); // use body-parser middleware to parse urls
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // use body-parser middleware to parse JSON
 
 const mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
 
 app.use('/test', test); 
 
 // add the routers for CRUD of tasks, users
 require('./routes/task.routes.js')(app);
-app.use('./')
+
+//app.use('./')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

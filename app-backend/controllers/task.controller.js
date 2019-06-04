@@ -1,9 +1,9 @@
 const Task = require('../models/task.model.js');
-const app = require('../app.js');
+var express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false })); // use body-parser middleware to parse urls
-app.use(bodyParser.json()); // use body-parser middleware to parse JSON
-
+app.use(bodyParser.urlencoded({ extended: false })); 
+app.use(bodyParser.json()); 
 
 
 
