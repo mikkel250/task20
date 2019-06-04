@@ -42,6 +42,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+//connect to DB
+mongoose.connect('mongodb+srv://testUser:4ZafLkOVJ0KaX8Tc@hyperion-kovej.mongodb.net/test?retryWrites=true', {
+  useNewUrlParser: true
+  }).then(() => {
+    console.log("Successfully connected to database.");
+
+  }).catch(err => {
+    console.log('Could not connect to database. Exiting now...', err);
+    process.exit();
+});
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

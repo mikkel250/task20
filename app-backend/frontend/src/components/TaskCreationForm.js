@@ -14,12 +14,12 @@ class FieldInput extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ [event.target.value]: event.target.value });
+        this.setState({ [fields]: event.target.value });
     }
 
     render() {
         const userInput = this.props.userInput;
-        const field = this.props.field;
+        const field = this.props.field;  //change to this.props.name?
         return (
             <label>
                 <legend>{fields[field]}:</legend>
@@ -51,11 +51,20 @@ class TaskCreationForm extends React.Component {
     //https://hackernoon.com/how-to-combine-a-nodejs-back-end-with-a-reactjs-front-end-app-ea9b24715032
 
     //https://www.freecodecamp.org/forum/t/how-to-submit-form-data-to-a-restful-api-in-react/163032
+
+    // step by step CRUD for MERN
+    // https://appdividend.com/2018/11/11/react-crud-example-mern-stack-tutorial/
+
+    // Definitely the best one so far: 
+    // https://medium.com/codingthesmartway-com-blog/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-2-637f337e5d61
+
+    // This one seems to handle the events in a cleaner way but has less explanation:
+    // https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack#ch8
     handleSubmit(event) {        
         event.preventDefault();
         const data = new FormData(event.target);
 
-        fetch('/task', {
+        fetch('http://localhost:3000/task', {
             method: 'POST',
             body: data,
         });
