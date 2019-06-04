@@ -7,64 +7,61 @@ const fields = {
     done: 'Done'
 }
 
-// Base field will always be dollars
-// function toRand(usd) {
-//     return (usd * 14.7);
-// }
-
-
-// function toPound(usd) {
-//     return (usd * 0.8);
-// }
-
-// function toEuro(usd) {
-//     return (usd * 0.9);
-// }
-
-// you pass in the appropriate function for the convert arg, e.g. convertUsd(25, toPound)
-// function convertUsd(usd, convert) {
-//     const input = parseFloat(usd);
-//     if (Number.isNaN(input)) {
-//         return "";
-//     }
-//     const output = convert(input);
-//     const rounded = Math.round(output * 1000) / 1000;
-//     return rounded.toString();
-// }
-
 class FieldInput extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(e) {
-        this.props.onfieldChange(e.target.value);
+    handleChange(event) {
+        this.setState({ [event.target.value]: event.target.value });
     }
 
     render() {
         const userInput = this.props.userInput;
         const field = this.props.field;
         return (
-            <fieldset>
+            <label>
                 <legend>{fields[field]}:</legend>
                 <input value={userInput}
                     onChange={this.handleChange} />
-            </fieldset>
+            </label>
         )
     }
 }
 
 class TaskCreationForm extends React.Component {
     constructor(props) {
-        super(props);
-        this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleContentChange = this.handleContentChange.bind(this);
-        this.handleOwnerChange = this.handleOwnerChange.bind(this);
-        this.handleDoneChange = this.handleDoneChange.bind(this);
-        this.state = {userInput: "", field: 'usd'}
+        super(props);        
+        this.state = {
+            title: 'Title',
+            content: 'Content',
+            owner: 'Owner',
+            done: 'Done'
+        };
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+    // https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
+
+    //https://hackernoon.com/how-to-combine-a-nodejs-back-end-with-a-reactjs-front-end-app-ea9b24715032
+
+    //https://www.freecodecamp.org/forum/t/how-to-submit-form-data-to-a-restful-api-in-react/163032
+    handleSubmit(event) {        
+        event.preventDefault();
+        const data = new FormData(event.target);
+
+        fetch('/task', {
+            method: 'POST',
+            body: data,
+        });
+    }
+
+    /* below should not be necessary using the handleChange syntax above
     handleTitleChange(userInput) {
         this.setState({ field: 'title', userInput });
     }
@@ -80,7 +77,8 @@ class TaskCreationForm extends React.Component {
     handleDoneChange(userInput) {
         this.setState({ field: 'done', userInput });
     }
-
+    */
+    
     render() {
         const titleInput = this.state.titleInput;
         const contentInput = this.state.contentInput;
@@ -92,23 +90,27 @@ class TaskCreationForm extends React.Component {
         // const eur = convertUsd(userInput, toEuro);
 
         return (
-            <div>
-                <FieldInput
-                    field="title"
-                    userInput={titleInput}
-                    onfieldChange={this.handleTitleChange} />
-                <FieldInput
-                    field="content"
-                    userInput={contentInput}
-                    onfieldChange={this.handleContentChange} />
-                <FieldInput
-                    field="owner"
-                    userInput={ownerInput}
-                    onfieldChange={this.handleOwnerChange} />
-                <FieldInput
-                    field="done"
-                    userInput={doneInput}
-                    onfieldChange={this.handleDoneChange} />
+            <div className="row">
+                <form name="newTask" className="col s3" onSubmit={this.handleSubmit}><h6>Create new Task:</h6><br /> 
+                    <FieldInput
+                        field="title"
+                        userInput={titleInput}
+                        onfieldChange={this.handleTitleChange} />
+                    <FieldInput
+                        field="content"
+                        userInput={contentInput}
+                        onfieldChange={this.handleContentChange} />
+                    <FieldInput
+                        field="owner"
+                        userInput={ownerInput}
+                        onfieldChange={this.handleOwnerChange} />
+                    <FieldInput
+                        field="done"
+                        userInput={doneInput}
+                        onfieldChange={this.handleDoneChange} /><br />
+                    <button className="btn waves-effect waves-light" name="submit">Submit<i className="material-icons right">>></i>
+                    </button>
+                </form>
             </div>
         );
 
