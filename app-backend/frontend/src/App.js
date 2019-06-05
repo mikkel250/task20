@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import TaskCreationForm from './components/TaskCreationForm';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
   state = { tasks: [] };
@@ -19,12 +20,13 @@ class App extends Component {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
+        <BrowserRouter>
         <h4>Tasks</h4>
         {this.state.tasks.map(test =>
           <div key={test._id} > {test.title} </div>
         )}
-        <TaskCreationForm />
+          <TaskCreationForm />
+        </BrowserRouter>
       </div>
     );
   }

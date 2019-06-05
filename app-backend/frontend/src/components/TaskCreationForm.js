@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 const fields = {
     title: 'Title',
@@ -6,6 +7,8 @@ const fields = {
     owner: 'Owner',
     done: 'Done'
 }
+
+const CreateTaskButton = () => <button className="btn waves-effect waves-light" name="submit">Submit<i className="material-icons right">>></i></button>;
 
 class FieldInput extends React.Component {
     constructor(props) {
@@ -64,42 +67,20 @@ class TaskCreationForm extends React.Component {
         event.preventDefault();
         const data = new FormData(event.target);
 
-        fetch('http://localhost:3000/task', {
+        fetch('/task', {
             method: 'POST',
             body: data,
         });
     }
-
-    /* below should not be necessary using the handleChange syntax above
-    handleTitleChange(userInput) {
-        this.setState({ field: 'title', userInput });
-    }
-
-    handleContentChange(userInput) {
-        this.setState({ field: 'content', userInput });
-    }
-
-    handleOwnerChange(userInput) {
-        this.setState({ field: 'owner', userInput });
-    }
-
-    handleDoneChange(userInput) {
-        this.setState({ field: 'done', userInput });
-    }
-    */
-    
+   
     render() {
         const titleInput = this.state.titleInput;
         const contentInput = this.state.contentInput;
         const ownerInput = this.state.ownerInput;
-        const doneInput = this.state.doneInput;
-        // Dont need to convert
-        // const rand = convertUsd(userInput, toRand);
-        // const gbp = convertUsd(userInput, toPound);
-        // const eur = convertUsd(userInput, toEuro);
 
         return (
-            <div className="row">
+            <BrowserRouter>
+            <div className="row">                
                 <form name="newTask" className="col s3" onSubmit={this.handleSubmit}><h6>Create new Task:</h6><br /> 
                     <FieldInput
                         field="title"
@@ -113,14 +94,11 @@ class TaskCreationForm extends React.Component {
                         field="owner"
                         userInput={ownerInput}
                         onfieldChange={this.handleOwnerChange} />
-                    <FieldInput
-                        field="done"
-                        userInput={doneInput}
-                        onfieldChange={this.handleDoneChange} /><br />
-                    <button className="btn waves-effect waves-light" name="submit">Submit<i className="material-icons right">>></i>
-                    </button>
+                    <br />
+                    <Route exact={true} path="/task" component={CreateTaskButton} />                    
                 </form>
             </div>
+            </BrowserRouter>
         );
 
     }
