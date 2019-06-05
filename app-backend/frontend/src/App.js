@@ -21,11 +21,18 @@ class App extends Component {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <BrowserRouter>
-        <h4>Tasks</h4>
-        {this.state.tasks.map(task =>
-          <div key={task._id} > {task.title} </div>
-        )}
-          <TaskCreationForm />
+          <div className="row">
+            <div className="col s3">
+              <h4>Tasks</h4>
+                {this.state.tasks.map(task =>
+                  <div key={task._id} > {task.title} </div>
+                  )}
+            </div>
+            <div className="col s6">
+              <TaskCreationForm />
+            </div>
+          </div>
+          
         </BrowserRouter>
       </div>
     );

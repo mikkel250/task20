@@ -80,8 +80,8 @@ class TaskCreationForm extends React.Component {
 
         return (
             <BrowserRouter>
-            <div className="row">                
-                <form name="newTask" className="col s3" onSubmit={this.handleSubmit}><h6>Create new Task:</h6><br /> 
+                          
+                <form name="newTask" onSubmit={this.handleSubmit}><h6>Create new Task:</h6><br /> 
                     <FieldInput
                         field="title"
                         userInput={titleInput}
@@ -97,7 +97,7 @@ class TaskCreationForm extends React.Component {
                     <br />
                     <Route exact={true} path="/task" component={CreateTaskButton} />                    
                 </form>
-            </div>
+            
             </BrowserRouter>
         );
 
