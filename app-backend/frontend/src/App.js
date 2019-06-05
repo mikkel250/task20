@@ -1,18 +1,17 @@
-import React, {Component} from 'react';
-//import logo from './logo.svg';
-import './App.css';
-import TaskCreationForm from './components/TaskCreationForm';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React from 'react';
+//import './App.css';
+import Header from './components/Header';
+import About from './components/About';
+import Profile from './components/Profile';
+import Product from './components/Product';
+import SimpleTabs from './components/SimpleTabs';
+//import { Button, Tabs, Tab, Icon } from 'react-materialize';
 
-class App extends Component {
-  state = { tasks: [] };
+const loggedIn = true;
+const name = 'Valerie';
 
-  componentDidMount() {
-    fetch('/task')
-      .then(res => res.json())
-      .then(tasks => this.setState({ tasks }));
-  }
 
+class App extends React.Component {
   render() {
     return (
       <div className="App">
@@ -20,24 +19,14 @@ class App extends Component {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <BrowserRouter>
-          <div className="row">
-            <div className="col s3">
-              <h4>Tasks</h4>
-                {this.state.tasks.map(task =>
-                  <div key={task._id} > {task.title} </div>
-                  )}
-            </div>
-            <div className="col s6">
-              <TaskCreationForm />
-            </div>
-          </div>
-          
-        </BrowserRouter>
+
+        <Header name={name} isLoggedIn={loggedIn} />
+        <SimpleTabs />
       </div>
-    );
-  }
+    )
+   }
+  
 }
 
-
 export default App;
+

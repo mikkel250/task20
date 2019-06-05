@@ -8,7 +8,7 @@ const fields = {
     done: 'Done'
 }
 
-const CreateTaskButton = () => <button className="btn waves-effect waves-light" name="submit">Submit<i className="material-icons right">>></i></button>;
+const CreateTaskButton = () => <button className="btn waves-effect waves-light" name="submit">Submit<i className="material-icons">send</i></button>;
 
 class FieldInput extends React.Component {
     constructor(props) {
@@ -95,7 +95,7 @@ class TaskCreationForm extends React.Component {
                         userInput={ownerInput}
                         onfieldChange={this.handleOwnerChange} />
                     <br />
-                    <Route exact={true} path="/task" component={CreateTaskButton} />                    
+                    <button className="btn waves-effect waves-light" size="large" name="submit"><i className="material-icons" pl={1}>send</i></button>
                 </form>
             
             </BrowserRouter>
