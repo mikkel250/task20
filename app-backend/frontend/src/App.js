@@ -7,12 +7,12 @@ import { BrowserRouter, Route } from 'react-router-dom';
 class App extends Component {
   state = { tasks: [] };
 
- /* componentDidMount() {
-    fetch('/test')
-      .then(res => res.text())
+  componentDidMount() {
+    fetch('/task')
+      .then(res => res.json())
       .then(tasks => this.setState({ tasks }));
   }
-*/
+
   render() {
     return (
       <div className="App">
@@ -22,8 +22,8 @@ class App extends Component {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <BrowserRouter>
         <h4>Tasks</h4>
-        {this.state.tasks.map(test =>
-          <div key={test._id} > {test.title} </div>
+        {this.state.tasks.map(task =>
+          <div key={task._id} > {task.title} </div>
         )}
           <TaskCreationForm />
         </BrowserRouter>
