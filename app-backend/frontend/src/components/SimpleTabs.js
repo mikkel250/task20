@@ -43,14 +43,14 @@ function SimpleTabs() {
           value={value}
           onChange={handleChange}
         >
-          <Tab label="About" />
-          <Tab label="Product"/>
-          {/* <Tab label="Profile" /> */}
+          <Tab label="Task List" />
+          <Tab label="New Task"/>
+          {/* <Tab label="Edit Task" /> */}
         </Tabs>
       </AppBar>
       {value === 0 && <TabContainer><ShowAllTasks /></TabContainer>}
       {value === 1 && <TabContainer><TaskCreationForm /></TabContainer>}
-      {/* {value === 2 && <TabContainer><Profile /></TabContainer>} */}
+      {/* {value === 2 && <TabContainer><EditTask /></TabContainer>} */}
     </div>
   );
 }

@@ -21,7 +21,7 @@ function Header(props) {
     return (
         <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src={logo} width={65} height={"auto"} alt="" /></a>
+            <a href="#" className="brand-logo"><img src={logo} width={65} height={"auto"} alt="" /></a>
             <ul id="nav" class="right hide-on-med-and-down">                
                 <li>Welcome {props.name}! </li>
                 <li><LoggedIn name={props.name} isLoggedIn={props.isLoggedIn}/></li>

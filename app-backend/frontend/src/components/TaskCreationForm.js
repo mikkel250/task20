@@ -80,24 +80,27 @@ class TaskCreationForm extends React.Component {
 
         return (
             <BrowserRouter>
-                          
-                <form name="newTask" onSubmit={this.handleSubmit}><h6>Create new Task:</h6><br /> 
-                    <FieldInput
-                        field="title"
-                        userInput={titleInput}
-                        onfieldChange={this.handleTitleChange} />
-                    <FieldInput
-                        field="content"
-                        userInput={contentInput}
-                        onfieldChange={this.handleContentChange} />
-                    <FieldInput
-                        field="owner"
-                        userInput={ownerInput}
-                        onfieldChange={this.handleOwnerChange} />
-                    <br />
-                    <button className="btn waves-effect waves-light" size="large" name="submit"><i className="material-icons" pl={1}>send</i></button>
-                </form>
-            
+                <div className="row">
+                    <div className="col s7" justify="flex-end">                  
+                    
+                        <form name="newTask" onSubmit={this.handleSubmit}><h6>Create new Task:</h6><br /> 
+                            <FieldInput
+                                field="title"
+                                userInput={titleInput}
+                                onfieldChange={this.handleTitleChange} />
+                            <FieldInput
+                                field="content"
+                                userInput={contentInput}
+                                onfieldChange={this.handleContentChange} />
+                            <FieldInput
+                                field="owner"
+                                userInput={ownerInput}
+                                onfieldChange={this.handleOwnerChange} />
+                            <br />
+                            <button className="btn waves-effect waves-light" size="large" name="submit"><i className="material-icons" pl={1}>send</i></button>
+                        </form>
+                    </div>
+                </div>
             </BrowserRouter>
         );
 
