@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 //import './App.css';
 import Header from './components/Header';
 import SimpleTabs from './components/SimpleTabs';
-
+import ResponsiveDrawer from './components/Drawer.js'
+import DrawerNew from './components/DrawerNew';
 
 const loggedIn = true;
 const name = 'Valerie';
@@ -21,9 +22,12 @@ class App extends React.Component {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
-        <Header name={name} isLoggedIn={loggedIn} />
-        <SimpleTabs />
+        <div className="row">
+          
+        </div>
+        <div classsName="row">
+          <ResponsiveDrawer />
+        </div>
       </div>
     );
    }
