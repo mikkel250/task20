@@ -5,7 +5,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TaskCreationForm from './TaskCreationForm'
 import ShowAllTasks from './ShowAllTasks';
 
@@ -55,10 +55,10 @@ const list = [
 const NavContent = () => (
     // Wrap this in a router tag? then Route and Route.Fragment for each item? going off V's App.js
     // she is essentially doing the same as a sidebar just at the top
-    //<Router>
+    <Router>
         <List>
             {list.map(({ primaryText, icon, route, component }, i) => (
-                <Link to={route} >
+                <Route exact path={route} component={component}>
                     <ListItem selected={i === 0} button>
                         <ListItemIcon>
                             <Icon>{icon}</Icon>
@@ -68,7 +68,7 @@ const NavContent = () => (
                             primaryTypographyProps={{ noWrap: true }}
                         />
                     </ListItem>
-                </Link>
+                </Route>
             ))}
             <Divider style={{ margin: "12px 0" }} />
             <ListItem button>
@@ -81,7 +81,7 @@ const NavContent = () => (
                 />
             </ListItem>
         </List>
-    //</Router>
+    </Router>
 );
 
 NavContent.propTypes = {};
