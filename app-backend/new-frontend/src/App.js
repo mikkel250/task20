@@ -1,13 +1,16 @@
 
-  import React from 'react';
-  import CssBaseline from '@material-ui/core/CssBaseline';
-  import MenuIcon from '@material-ui/icons/Menu';
-  import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-  import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-  import { Root, Header, Nav, Content, Footer } from './Layout';
-  import List from '@bit/mui-org.material-ui.list'
-  import NavContent from './components/NavContent'
-  
+import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import MenuIcon from '@material-ui/icons/Menu';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import { Root, Header, Nav, Content, Footer } from './Layout';
+import List from '@bit/mui-org.material-ui.list'
+import NavContent from './components/NavContent'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ShowAllTasks from './components/ShowAllTasks';
+
+
   const config = {
   "navAnchor": "left",
   "navVariant": {
@@ -77,9 +80,18 @@ const App = () => (
       >
         {<NavContent />}
       </Nav>
-      <Content>
-        {/* content goes here */}
-      </Content>
+      <Router>
+        <Content>
+          {/* Use the render and anonymous function to render an element 
+          from this vid: https://reacttraining.com/react-router/ */}
+          <Route exact path='/' render={() => (
+            // this might actually be a good place to put a calendar
+          <h3>Welcome to the Task Manager</h3> 
+          )} />
+          {/* Use component to render a predefined component */}
+          <Route exact path="/tasks" component={ShowAllTasks} />
+        </Content>
+      </Router>
       <Footer>{/* footer goes here */}</Footer>
     </Root>
   )
