@@ -58,21 +58,19 @@ const NavContent = () => (
     <Router>
         <List>
             {list.map(({ primaryText, icon, route, component }, i) => (
-                <Route exact path={route} render={ props => (
-                    <React.Fragment>
-                        <ListItem selected={i === 0} button >
-                            <ListItemIcon>
-                                <Icon>{icon}</Icon>
-                            </ListItemIcon>
+                <Link to={route} >                
+                    <ListItem selected={i === 0} button >
+                        <ListItemIcon>
+                            <Icon>{icon}</Icon>
+                        </ListItemIcon>
+                        
                             <ListItemText
                                 primary={primaryText}
                                 primaryTypographyProps={{ noWrap: true }}
                             />
-                        </ListItem>
-                    </React.Fragment>
-               )} />
-                    
-               //</Route>
+                        
+                    </ListItem>
+                </Link>
             ))}
             <Divider style={{ margin: "12px 0" }} />
             <ListItem button>
