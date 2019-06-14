@@ -13,7 +13,7 @@ const list = [
     {
         primaryText: "This one doesn't show up for some reason",
         icon: "folder",
-        route: "/tasks", 
+        route: "/task", 
         component: <ShowAllTasks />
     },
     {
@@ -55,20 +55,24 @@ const list = [
 const NavContent = () => (
     // Wrap this in a router tag? then Route and Route.Fragment for each item? going off V's App.js
     // she is essentially doing the same as a sidebar just at the top
-    //<Router>
+    <Router>
         <List>
             {list.map(({ primaryText, icon, route, component }, i) => (
-                <Link to={route} >
-                    <ListItem selected={i === 0} button>
-                        <ListItemIcon>
-                            <Icon>{icon}</Icon>
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={primaryText}
-                            primaryTypographyProps={{ noWrap: true }}
-                        />
-                    </ListItem>
-                </Link>
+                <Route exact path={route} render={ props => (
+                    <React.Fragment>
+                        <ListItem selected={i === 0} button >
+                            <ListItemIcon>
+                                <Icon>{icon}</Icon>
+                            </ListItemIcon>
+                            <ListItemText
+                                primary={primaryText}
+                                primaryTypographyProps={{ noWrap: true }}
+                            />
+                        </ListItem>
+                    </React.Fragment>
+               )} />
+                    
+               //</Route>
             ))}
             <Divider style={{ margin: "12px 0" }} />
             <ListItem button>
@@ -81,7 +85,7 @@ const NavContent = () => (
                 />
             </ListItem>
         </List>
-    //</Router>
+    </Router>
 );
 
 NavContent.propTypes = {};
