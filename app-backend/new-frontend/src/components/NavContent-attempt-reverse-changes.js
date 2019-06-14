@@ -13,7 +13,7 @@ const list = [
     {
         primaryText: "This one doesn't show up for some reason",
         icon: "folder",
-        route: "/task", 
+        route: "/tasks", 
         component: <ShowAllTasks />
     },
     {
@@ -58,17 +58,15 @@ const NavContent = () => (
     //<Router>
         <List>
             {list.map(({ primaryText, icon, route, component }, i) => (
-                <Link to={route} >                
-                    <ListItem selected={i === 0} button >
+                <Link to={route} >
+                    <ListItem selected={i === 0} button>
                         <ListItemIcon>
                             <Icon>{icon}</Icon>
                         </ListItemIcon>
-                        
-                            <ListItemText
-                                primary={primaryText}
-                                primaryTypographyProps={{ noWrap: true }}
-                            />
-                        
+                        <ListItemText
+                            primary={primaryText}
+                            primaryTypographyProps={{ noWrap: true }}
+                        />
                     </ListItem>
                 </Link>
             ))}

@@ -33,6 +33,16 @@ ReactDOM.render(routing, document.getElementById('root'))
 
 
 
-
 // OK CONFIRMED - THIS METHOD IS WORKING FOR THE CONTENT!! YAY!
 // USE ROUTES INSIDE THE APP.JS. MAY BE ABLE TO NOT USE THE LINK TAG, WE'LL SEE.
+
+
+
+//  TODO for the app:
+//     - Create API routes to render the TaskCreationForm, filtering, calendar, and deleting (optional, see 4th note down regarding this)
+// - Create the React components for the views above and link to the Routes in the App.js file
+// - Make the landing page a calendar view?
+// - Make the tasks in the tasklist(s) links that when clicked run task.update Api call (need to pass in the id to the call)
+// do the same as the above but with task.delete for the delete page or just get rid of the delete page and add a button on the tasklist views to delete them (actually two buttons - mark as done and delete, where mark as done will either add a field that can be filtered in various views or move it to a different collection).
+
+
