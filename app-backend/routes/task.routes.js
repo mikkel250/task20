@@ -13,6 +13,8 @@ module.exports = (app) => {
     // retrieve all tasks
     app.get('/task/:taskId', task.findOne);
 
+    //
+
     // retrieve completed tasks
     //app.get('/task/completed', task.findAllCompleted);
 

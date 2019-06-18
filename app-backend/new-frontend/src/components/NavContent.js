@@ -25,7 +25,7 @@ const list = [
     {
         primaryText: "Add Task",
         icon: "add_circle",
-        route: "/TaskCreationForm",
+        route: "/create",
         component: <ShowAllTasks />
     },
     {
@@ -55,24 +55,25 @@ const list = [
 const NavContent = () => (
     // Wrap this in a router tag? then Route and Route.Fragment for each item? going off V's App.js
     // she is essentially doing the same as a sidebar just at the top
-    //<Router>
-        <List>
-            {list.map(({ primaryText, icon, route, component }, i) => (
-                <Link to={route} >                
-                    <ListItem selected={i === 0} button >
-                        <ListItemIcon>
-                            <Icon>{icon}</Icon>
-                        </ListItemIcon>
-                        
-                            <ListItemText
-                                primary={primaryText}
-                                primaryTypographyProps={{ noWrap: true }}
-                            />
-                        
-                    </ListItem>
-                </Link>
-            ))}
-            <Divider style={{ margin: "12px 0" }} />
+    
+    <List>
+        {list.map(({ primaryText, icon, route}, i) => (
+            <Link to={route} >                
+                <ListItem selected={i === 0} button >
+                    <ListItemIcon>
+                        <Icon>{icon}</Icon>
+                    </ListItemIcon>
+                    
+                        <ListItemText
+                            primary={primaryText}
+                            primaryTypographyProps={{ noWrap: true }}
+                        />
+                    
+                </ListItem>
+            </Link>
+        ))}
+    <Divider style={{ margin: "12px 0" }} />
+        <Link to={"/teams"} >
             <ListItem button>
                 <ListItemIcon>
                     <Icon>group</Icon>
@@ -82,8 +83,8 @@ const NavContent = () => (
                     primaryTypographyProps={{ noWrap: true }}
                 />
             </ListItem>
-        </List>
-    //</Router>
+        </Link>
+    </List>    
 );
 
 NavContent.propTypes = {};

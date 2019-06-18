@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 const fields = {
     title: 'Title',
@@ -33,14 +35,15 @@ class FieldInput extends React.Component {
     }
 }
 
+
+
 class TaskCreationForm extends React.Component {
     constructor(props) {
         super(props);        
         this.state = {
             title: 'Title',
             content: 'Content',
-            owner: 'Owner',
-            done: 'Done'
+            owner: 'Owner'
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -63,14 +66,12 @@ class TaskCreationForm extends React.Component {
 
     // This one seems to handle the events in a cleaner way but has less explanation:
     // https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack#ch8
-    handleSubmit(event) {        
+    onSubmit(event) {        
         event.preventDefault();
-        const data = new FormData(event.target);
-
-        fetch('/task', {
-            method: 'POST',
-            body: data,
-        });
+        this.props.TaskCreationForm(this.state.title);
+        this.props.TaskCreationForm(this.state.content);
+        this.props.TaskCreationForm(this.state.owner);
+        this.setState({ title: '', content: '', owner: '' });
     }
    
     render() {
@@ -83,7 +84,7 @@ class TaskCreationForm extends React.Component {
                 <div className="row">
                     <div className="col s7" justify="flex-end">                  
                     
-                        <form name="newTask" onSubmit={this.handleSubmit}><h6>Create new Task:</h6><br /> 
+                        <form name="newTask" onSubmit={this.onSubmit}><h3>Create new Task:</h3><br /> 
                             <FieldInput
                                 field="title"
                                 userInput={titleInput}
@@ -97,7 +98,7 @@ class TaskCreationForm extends React.Component {
                                 userInput={ownerInput}
                                 onfieldChange={this.handleOwnerChange} />
                             <br />
-                            <button className="btn waves-effect waves-light" size="large" name="submit"><i className="material-icons" pl={1}>send</i></button>
+                            <button className="btn waves-effect waves-light" size="large" type="submit" value="Submit"><i className="material-icons" pl={1}>send</i></button>
                         </form>
                     </div>
                 </div>
@@ -105,6 +106,11 @@ class TaskCreationForm extends React.Component {
         );
 
     }
+}
+
+//PropTypes
+TaskCreationForm.propTypes = {
+    TaskCreationForm: PropTypes.func.isRequired
 }
 
 export default TaskCreationForm;
