@@ -9,7 +9,7 @@ import NavContent from './components/NavContent'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ShowAllTasks from './components/ShowAllTasks';
 import TaskCreationForm from './components/TaskCreationForm';
-import AddTask from './components/AddTask';
+
 
   const config = {
   "navAnchor": "left",
@@ -99,7 +99,7 @@ const App = () => (
           />
           {/* Use component to render a predefined component */}
           <Route exact path="/task" component={ShowAllTasks} />
-          <Route exact path="/create" component={AddTask} />
+          <Route exact path="/create" component={TaskCreationForm} />
           {/* <Route exact path="/calendar" component={Calendar} /> 
           <Route exact path="/teams" component={Teams} /> */}
         </Switch>
