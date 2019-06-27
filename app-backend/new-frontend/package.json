@@ -12,6 +12,7 @@
     "color": "^3.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-big-calendar": "^0.22.0",
     "react-dom": "^16.8.6",
     "react-router-dom": "^4.4.0-beta.8",
     "react-scripts": "3.0.1",
