@@ -47,11 +47,19 @@ class TaskCreationForm extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+    
   }
+
+  handleSubmit(event) {
+    alert(`Task added: ${this.state.value}`);
+    event.preventDefault();
+  }
+
   // https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
 
   //https://hackernoon.com/how-to-combine-a-nodejs-back-end-with-a-reactjs-front-end-app-ea9b24715032
@@ -66,17 +74,17 @@ class TaskCreationForm extends React.Component {
 
   // This one seems to handle the events in a cleaner way but has less explanation:
   // https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack#ch8
-  onSubmit(event, titleInput, contentInput, ownerInput) {
-    event.preventDefault();
-    // this.props.TaskCreationForm(this.state.title);
-    // this.props.TaskCreationForm(this.state.content);
-    // this.props.TaskCreationForm(this.state.owner);
-    this.setState({
-      title: {titleInput},
-      content: {contentInput},
-      owner: {ownerInput}
-    });
-  }
+  // onSubmit(event, titleInput, contentInput, ownerInput) {
+  //   event.preventDefault();
+  //   // this.props.TaskCreationForm(this.state.title);
+  //   // this.props.TaskCreationForm(this.state.content);
+  //   // this.props.TaskCreationForm(this.state.owner);
+  //   this.setState({
+  //     title: {titleInput},
+  //     content: {contentInput},
+  //     owner: {ownerInput}
+  //   });
+  // }
 
   render() {
     const titleInput = this.state.titleInput;
@@ -130,3 +138,6 @@ TaskCreationForm.propTypes = {
 }
 
 export default TaskCreationForm;
+
+// 7/23 Try this: 
+// https://reactjs.org/docs/forms.html#handling-multiple-inputs
