@@ -9,6 +9,7 @@ import NavContent from './components/NavContent'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ShowAllTasks from './components/ShowAllTasks';
 import TaskCreationForm from './components/TaskCreationForm';
+import TaskCreationFormReactDocsVer from './components/TaskCreationFormReactDocsVer';
 
 
   const config = {
@@ -99,7 +100,7 @@ const App = () => (
           />
           {/* Use component to render a predefined component */}
           <Route exact path="/task" component={ShowAllTasks} />
-          <Route exact path="/create" component={TaskCreationForm} />
+          <Route exact path="/create" component={TaskCreationFormReactDocsVer} />
           {/* <Route exact path="/calendar" component={Calendar} /> 
           <Route exact path="/teams" component={Teams} /> */}
         </Switch>

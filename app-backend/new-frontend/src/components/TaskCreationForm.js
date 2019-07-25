@@ -141,3 +141,5 @@ export default TaskCreationForm;
 
 // 7/23 Try this: 
 // https://reactjs.org/docs/forms.html#handling-multiple-inputs
+
+//https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825
