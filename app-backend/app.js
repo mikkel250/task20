@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const app = express();
 const mongoConnectString = process.env.MONGO_URI;
-
 const test = require('./routes/test.js');
 
 // add & configure middleware
@@ -39,7 +38,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // INFO ON ROUTERS -- COULD JUST USE THE STANDARD METHOD AS WELL
 // https://scotch.io/tutorials/learn-to-use-the-new-router-in-expressjs-4
-
 
 
 //connect to DB
