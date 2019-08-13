@@ -84,8 +84,7 @@ class CreateTask extends React.Component {
       content,
       owner
     })
-      //.then(res => this.setState({title: {title}, content: {content}, owner: {owner} }))
-      .then(res => console.log(res.data))
+      .then(res => alert(`Added Task:\ntitle: ${title}, content: ${content}, owner: ${owner}`))
       .catch(error => { console.log(error.response)})
 
   }

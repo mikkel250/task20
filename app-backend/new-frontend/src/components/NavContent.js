@@ -8,12 +8,15 @@ import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import TaskCreationForm from './TaskCreationForm'
 import ShowAllTasks from './ShowAllTasks';
+import FilterTasks from './FilterTasks';
+import DeleteTasks from './DeleteTasks';
+
 
 const list = [
     {
         primaryText: "This one doesn't show up for some reason",
         icon: "folder",
-        route: "/task", 
+        route: "/", 
         component: <ShowAllTasks />
     },
     {
@@ -31,24 +34,14 @@ const list = [
     {
         primaryText: "Filter",
         icon: "filter_list",
-        route: "/task/:taskID",
-        component: <ShowAllTasks />
+        route: "/filter",
+        component: <FilterTasks />
     },
-    {
-        primaryText: "Calendar View",
-        icon: "event"
-    },
-    // {
-    //     primaryText: "Offline",
-    //     icon: "offline_pin"
-    // },
-    // {
-    //     primaryText: "Backups",
-    //     icon: "backup"
-    // },
     {
         primaryText: "Delete Tasks",
-        icon: "delete"
+        icon: "delete",
+        route: "/delete",
+        component: <DeleteTasks />
     }
 ];
 

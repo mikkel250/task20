@@ -10,6 +10,8 @@ module.exports = (app) => {
     // retrieve all tasks
     app.get('/task', task.findAll);
 
+    app.get('/filter', task.findAll);
+
     // retrieve all tasks
     app.get('/task/:taskId', task.findOne);
 

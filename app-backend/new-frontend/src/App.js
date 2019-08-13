@@ -103,6 +103,7 @@ const App = () => (
           {/* Use component to render a predefined component */}
           <Route exact path="/task" component={ShowAllTasks} />
           <Route exact path="/create" component={CreateTask} />
+          <Route exact path="/filter" component={FilterTasks} />
           {/* <Route exact path="/teams" component={Teams} /> */}
         </Switch>
       </Content>
