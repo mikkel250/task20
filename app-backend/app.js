@@ -4,7 +4,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require("cors");
 const app = express();
+app.use(cors());
+
 const mongoConnectString = process.env.MONGO_URI;
 const test = require('./routes/test.js');
 
@@ -35,9 +38,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// INFO ON ROUTERS -- COULD JUST USE THE STANDARD METHOD AS WELL
-// https://scotch.io/tutorials/learn-to-use-the-new-router-in-expressjs-4
 
 
 //connect to DB
