@@ -5,6 +5,7 @@ const TaskSchema = mongoose.Schema({
     title: String,
     content: String,    
     owner: String,
+    due: Date,
     done: {
         type: Boolean
     },

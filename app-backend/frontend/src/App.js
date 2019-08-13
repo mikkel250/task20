@@ -85,7 +85,7 @@ const App = () => (
         {<NavContent />}
       </Nav>
 
-      <Content>
+      <Content className="ml3">
         <Switch>
           {/* Use the render and anonymous function to render an element 
               from this vid: https://reacttraining.com/react-router/ */}
@@ -95,15 +95,15 @@ const App = () => (
             render={() => (
               // this might actually be a good place to put a calendar
               <>
-                <h3>Welcome to the Task Manager</h3>
-                <Calendar />
+                <h3 className="ml3">Welcome to the Task Manager</h3>
+                <Calendar className="ma3" />
               </>
             )}
           />
           {/* Use component to render a predefined component */}
           <Route exact path="/task" component={ShowAllTasks} />
           <Route exact path="/create" component={CreateTask} />
-          <Route exact path="/filter" component={FilterTasks} />
+          {/* <Route exact path="/filter" component={FilterTasks} /> */}
           {/* <Route exact path="/teams" component={Teams} /> */}
         </Switch>
       </Content>
