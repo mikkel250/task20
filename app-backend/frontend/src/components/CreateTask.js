@@ -24,7 +24,6 @@ class CreateTask extends React.Component {
 
 
   handleSubmit = (event) => {
-    event.preventDefault();
 
     // get our form data out of state
     const { title, content, owner, due, message } = this.state;
@@ -36,18 +35,22 @@ class CreateTask extends React.Component {
         content,
         owner,
         due
-      })
-      //.then(res => this.setState({title: {title}, content: {content}, owner: {owner} }))
-      .then(res => {
+      })      
         // see here to clear form and add success msg https://stackoverflow.com/questions/54257943/clearing-forms-in-react-after-submission
-        if (res.data.msg === "success") { 
-          this.setState({ message: "Task added!"})
-        }
+      .then(function (response) {
+        let successMessage = document.querySelector('.success-message');
+        successMessage.innerHTML = `Task created with title ` + JSON.stringify(response.data.title);
+        successMessage.className = 'bg-green mw5 ma-2';
       })
-      .catch(error => {
-        console.log(error.response);
-      })
-  }
+      .catch(function (error) {
+        let successMessage = document.querySelector('.success-message');
+        successMessage.innerHTML = JSON.stringify(error);
+      });
+
+    event.preventDefault();
+    this.setState({ title: '', content: '', owner: '', due: '' }) // <= here
+  }     
+
 
   render() {
     return (
@@ -100,7 +103,10 @@ class CreateTask extends React.Component {
           />
         </label>
         <br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className="ml3"/>
+        <div className="success-message">
+                <label></label>
+              </div>
       </form>
     );
   }

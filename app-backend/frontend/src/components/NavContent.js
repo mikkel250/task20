@@ -38,7 +38,7 @@ const list = [
         component: <FilterTasks />
     },
     {
-        primaryText: "Delete Tasks",
+        primaryText: "Edit or Delete Tasks",
         icon: "delete",
         route: "/delete",
         component: <DeleteTasks />
