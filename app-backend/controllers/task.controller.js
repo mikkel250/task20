@@ -20,8 +20,9 @@ exports.create = (req, res) => {
     const task = new Task({
         title: req.body.title || "Untitled task",
         content: req.body.content,
-        owner: req.body.owner || "unclaimed"
-        //done: false
+        owner: req.body.owner || "unclaimed",
+        due: req.body.due,
+        done: false
     });
 
     //save task in db

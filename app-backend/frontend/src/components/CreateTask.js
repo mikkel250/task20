@@ -26,7 +26,7 @@ class CreateTask extends React.Component {
   handleSubmit = (event) => {
 
     // get our form data out of state
-    const { title, content, owner, due, message } = this.state;
+    const { title, content, owner, due, done } = this.state;
 
     // use axios to post data to the database
     axios
@@ -34,7 +34,8 @@ class CreateTask extends React.Component {
         title,
         content,
         owner,
-        due
+        due,
+        done
       })      
         // see here to clear form and add success msg https://stackoverflow.com/questions/54257943/clearing-forms-in-react-after-submission
       .then(function (response) {
@@ -48,7 +49,7 @@ class CreateTask extends React.Component {
       });
 
     event.preventDefault();
-    this.setState({ title: '', content: '', owner: '', due: '' }) // <= here
+    this.setState({ title: '', content: '', owner: '', due: '', done: false }) // <= here
   }     
 
 
