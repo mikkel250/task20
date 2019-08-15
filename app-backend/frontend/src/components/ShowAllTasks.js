@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Checkbox from "@material-ui/core/Checkbox";
+import Button from '@material-ui/core/Button';
+
+
 
 
 class ShowAllTasks extends Component {
@@ -18,22 +21,18 @@ class ShowAllTasks extends Component {
             <h4 className="ml4">Task List</h4>
 
             {this.state.tasks.map(task => (
-              <div className="ml3 mb2 bg-light-green shadow-5 grow mw5">
-                <Checkbox
+              <div className="ml3 mb2 bg-light-green shadow-5 grow mw6">
+                {/* <Checkbox
                   task={task}
                   className=""
                   key={task._id}
                   value={`checkbox${task._id}`}
                   color="blue"
-                  // inputProps={{
-                  //   'aria-label':
-                  //     `Title: ` + { task.title } '\n',
-                  //     `Content: ` + { task.content } '\n'
-                  //     `Owner: ` + { task.owner } '\n'
-                  //   `Due Date: ` + { task.title } '\n'
-                  //   `Done: ` + { task.title } '\n'
-                  // }}
-                />
+                  inputProps={{
+                    'aria-label':
+                      
+                  }}
+                /> */}
                 Title: {task.title}
                 <div className="ml4">Content: {task.content}</div>
                 <br />
@@ -42,7 +41,27 @@ class ShowAllTasks extends Component {
                 <div className="ml4">Due Date: {task.due}</div>
                 <br />
                 {/* Note: if marked done, then use strikethrough font */}
-                <Button>Edit</Button><Button>Mark Done</Button>
+                <Button
+                  className=""
+                  variant="outlined"
+                  color="primary"
+                >
+                  Edit
+                </Button>
+                <Button
+                  className="fr"
+                  variant="outlined"
+                  color="secondary"
+                >
+                  Mark Done
+                </Button>
+                <Button
+                  className="fr"
+                  variant="outlined"
+                  color="secondary"
+                >
+                  Delete
+                </Button>
               </div>
             ))}
           </div>
