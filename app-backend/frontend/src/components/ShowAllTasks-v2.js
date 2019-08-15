@@ -18,23 +18,10 @@ class ShowAllTasks extends Component {
             <h4>Task List</h4>
 
             {this.state.tasks.map(task => (
-              <div>
-                <Checkbox
-                  className=""
-                  key={task._id}
-                  value={`checkbox${task._id}`}
-                  color="primary"
-                  inputProps={{
-                    'aria-label':
-                      `Title: ` + { task.title } '\n'
-                      `Content: ` + { task.content } '\n'
-                      `Owner: ` + { task.owner } '\n'
-                    `Due Date: ` + { task.title } '\n'
-                    `Done: ` + { task.title } '\n'
-                  }}
-                >
+              <div className="row">
+                <div className="col s6" key={task._id}>
                   {task.title}
-                </Checkbox>
+                </div>
                 <div className="col s6"> <Checkbox >Done</Checkbox> </div>
               </div>
             ))}
