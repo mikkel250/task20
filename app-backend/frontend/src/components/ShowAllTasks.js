@@ -42,6 +42,7 @@ class ShowAllTasks extends Component {
                 <div className="ml4">Due Date: {task.due}</div>
                 <br />
                 {/* Note: if marked done, then use strikethrough font */}
+                <Button>Edit</Button><Button>Mark Done</Button>
               </div>
             ))}
           </div>
