@@ -6,10 +6,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import TaskCreationForm from './TaskCreationForm'
+// import TaskCreationForm from './TaskCreationForm'
 import ShowAllTasks from './ShowAllTasks';
-import FilterTasks from './FilterTasks';
-import DeleteTasks from './DeleteTasks';
+import CreateTask from './CreateTask';
 
 
 const list = [
@@ -29,20 +28,9 @@ const list = [
         primaryText: "Add Task",
         icon: "add_circle",
         route: "/create",
-        component: <ShowAllTasks />
+        component: <CreateTask />
     },
-    {
-        primaryText: "Filter",
-        icon: "filter_list",
-        route: "/filter",
-        component: <FilterTasks />
-    },
-    {
-        primaryText: "Edit or Delete Tasks",
-        icon: "delete",
-        route: "/delete",
-        component: <DeleteTasks />
-    }
+   
 ];
 
 const NavContent = () => (

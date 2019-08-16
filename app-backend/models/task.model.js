@@ -7,7 +7,8 @@ const TaskSchema = mongoose.Schema({
     owner: String,
     due: Date,
     done: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
 },
     {

@@ -11,6 +11,7 @@ class CreateTask extends React.Component {
       title: "",
       content: "",
       owner: "",
+      due: "",
       message: ""
     };
 
@@ -40,12 +41,16 @@ class CreateTask extends React.Component {
         // see here to clear form and add success msg https://stackoverflow.com/questions/54257943/clearing-forms-in-react-after-submission
       .then(function (response) {
         let successMessage = document.querySelector('.success-message');
-        successMessage.textarea = `Task created with title ` + JSON.stringify(response.data.title);
+        successMessage.textContent =
+          `Task created with title ` +
+          JSON.stringify(response.data.title) +
+          `\n ` +
+          JSON.stringify(response.data);
         successMessage.className = 'bg-green mw5 ma-2';
       })
       .catch(function (error) {
         let successMessage = document.querySelector('.success-message');
-        successMessage.textarea = JSON.stringify(error);
+        successMessage.textContent = JSON.stringify(error);
       });
 
     event.preventDefault();
@@ -97,7 +102,7 @@ class CreateTask extends React.Component {
           Due Date:
           <input
             className="ma3"
-            type="date"
+            type="Date"
             name="due"
             value={this.state.due}
             onChange={this.handleChange}

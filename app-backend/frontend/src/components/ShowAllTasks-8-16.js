@@ -30,15 +30,15 @@ function markDone(task) {
    window.location.reload();
 }
 
-// function filterByDate(tasks, filterDate) {
-//   console.log(tasks, filterDate);
-//   const filteredTasks = tasks.filter(task => {
-//     if (task.due <= filterDate) {
-//       return task
-//     }
-//   });
-//   return <ShowAllTasks tasks={filteredTasks} />
-// }
+function filterByDate(tasks, filterDate) {
+  console.log(tasks, filterDate);
+  const filteredTasks = tasks.filter(task => {
+    if (task.due <= filterDate) {
+      return task
+    }
+  });
+  return <ShowAllTasks tasks={filteredTasks} />
+}
 
 
 class ShowAllTasks extends Component {

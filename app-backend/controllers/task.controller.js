@@ -74,17 +74,14 @@ exports.findOne = (req, res) => {
 // update a task identified by taskId in the request
 exports.update = (req, res) => {
     //Validate request
-    if (!req.body.content) {
+    if (!req.body) {
         return res.status(400).send({
-            message: 'task content cannot be empty.'
+            message: 'No body sent!\n' + req.body
         });
     }
-
+    
     //find task and update it with the request body
-    Task.findByIdAndUpdate(req.params.taskId, {
-        title: req.body.title || "Untitled task",
-        content: req.body.content
-    }, { new: true }) //The {new: true} option method is used to return the modified document to the then() function instead of the original.
+    Task.findByIdAndUpdate(req.params.taskId, req.body, { new: true }) //The {new: true} option method is used to return the modified document to the then() function instead of the original.
     .then(task => {
         if (!task) {
             return res.status(404).send({
