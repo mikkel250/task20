@@ -40,12 +40,12 @@ class CreateTask extends React.Component {
         // see here to clear form and add success msg https://stackoverflow.com/questions/54257943/clearing-forms-in-react-after-submission
       .then(function (response) {
         let successMessage = document.querySelector('.success-message');
-        successMessage.innerHTML = `Task created with title ` + JSON.stringify(response.data.title);
+        successMessage.textarea = `Task created with title ` + JSON.stringify(response.data.title);
         successMessage.className = 'bg-green mw5 ma-2';
       })
       .catch(function (error) {
         let successMessage = document.querySelector('.success-message');
-        successMessage.innerHTML = JSON.stringify(error);
+        successMessage.textarea = JSON.stringify(error);
       });
 
     event.preventDefault();

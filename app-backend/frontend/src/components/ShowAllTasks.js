@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import Checkbox from "@material-ui/core/Checkbox";
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
+function deleteTask(task_id) {
+  axios
+    .delete("http://localhost:3001/task/delete", {
+      data: task_id
+    })
+    .then(() => console.log(`${task_id} successfully deleted from db`))
+    .catch(function(error) {
+      console.log(error);
+    });
 
-
+}
 
 class ShowAllTasks extends Component {
     state = { tasks: [] };
@@ -21,7 +29,7 @@ class ShowAllTasks extends Component {
             <h4 className="ml4">Task List</h4>
 
             {this.state.tasks.map(task => (
-              <div className="ml3 mb2 bg-light-green shadow-5 grow mw6">
+              <div className="ml3 mb2 bg-light-green shadow-5 grow mw6"key={task._id * 100}>
                 {/* <Checkbox
                   task={task}
                   className=""
@@ -42,23 +50,29 @@ class ShowAllTasks extends Component {
                 <br />
                 {/* Note: if marked done, then use strikethrough font */}
                 <Button
+                  
                   className=""
                   variant="outlined"
                   color="primary"
+                  onClick={() => console.log('edit clicked')}
                 >
                   Edit
                 </Button>
                 <Button
+                  
                   className="fr"
                   variant="outlined"
                   color="secondary"
+                  onClick={() => task.done=true}
                 >
                   Mark Done
                 </Button>
                 <Button
+                  
                   className="fr"
                   variant="outlined"
                   color="secondary"
+                  onClick={() => deleteTask(task.id)}
                 >
                   Delete
                 </Button>

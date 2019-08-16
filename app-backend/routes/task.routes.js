@@ -36,7 +36,7 @@ module.exports = (app) => {
     //app.put('/task/:taskId', task.update);
 
     //delete task with nodeId
-    //app.delete('/task/:taskId', task.delete);
+    app.delete('/task/:taskId', task.delete);
 
    // app.get('/filter', task.filter);
 
