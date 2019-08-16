@@ -3,9 +3,8 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 function deleteTask(task_id) {
-   
   axios
-    .delete("http://localhost:3001/delete", {
+    .delete("http://localhost:3001/task/delete", {
       data: task_id
     })
     .then(() => console.log(`${task_id} successfully deleted from db`))
@@ -13,19 +12,6 @@ function deleteTask(task_id) {
       console.log(error);
     });
 
-}
-
-function markDone(task_id, done) {
-  const completed = {
-    done: true
-  }
-  
-  axios
-    .put(`http://localhost:3001/${task_id}`, completed)
-    .then(() => console.log(`${task_id} successfully marked done`)) // then, strikeout font on this task
-    .catch(function(error) {
-      console.log(error);
-    });
 }
 
 class ShowAllTasks extends Component {
@@ -77,7 +63,7 @@ class ShowAllTasks extends Component {
                   className="fr"
                   variant="outlined"
                   color="secondary"
-                  onClick={() => markDone(task.id)} // this needs to be an API call PUT /task/taskId to update the DB
+                  onClick={() => task.done=true}
                 >
                   Mark Done
                 </Button>

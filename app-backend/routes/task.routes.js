@@ -33,7 +33,7 @@ module.exports = (app) => {
     //app.get('/task/:taskId', task.findOne);
 
     //update a task with taskId
-    //app.put('/task/:taskId', task.update);
+    app.put('/task/:taskId', task.update);
 
     //delete task with nodeId
     app.delete('/task/:taskId', task.delete);
