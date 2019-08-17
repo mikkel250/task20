@@ -30,45 +30,40 @@ function markDone(task) {
    window.location.reload();
 }
 
-function filterByDate(tasks, filterDate) {
-  console.log(tasks, filterDate);
-  const filteredTasks = tasks.filter(task => {
-    if (task.due <= filterDate) {
-      return task
-    }
-  });
-  return <ShowAllTasks tasks={filteredTasks} />
-}
+// function filterByDate(tasks, filterDate) {
+//   console.log(tasks, filterDate);
+//   const filteredTasks = tasks.filter(task => {
+//     if (task.due <= filterDate) {
+//       return task
+//     }
+//   });
+//   return <ShowAllTasks tasks={filteredTasks} />
+// }
 
 
 class ShowAllTasks extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { tasks: [], filterDate: '' };
   }
-    componentDidMount() {
-        fetch('/task')
-            .then(res => res.json())
-            .then(tasks => this.setState({ tasks }));
-    }
+    // componentDidMount() {
+    //     fetch('/task')
+    //         .then(res => res.json())
+    //         .then(tasks => this.setState({ tasks }));
+    // }
     
     render() {
       
       return (
         <div>
-          <h2 className="ml4">Task List</h2>
-          <div className="pa2">
-            <input
-              className="pa3 ba b--green bg-lightest-blue"
-              type="Date"
-              placeholder=""
-              onChange={() => filterByDate(this.state.tasks, this.state.Date)}
-            />
-          </div>
+          {/* <h2 className="ml4">Task List</h2> */}
+          {console.log(
+            `tasks: ${ShowAllTasksconsole.log(`tasks: ${task}`)}`
+          )}
           {this.state.tasks.map(task => (
             <div
               className="ml3 mb2 bg-light-green shadow-5 grow mw6"
-              key={task._id * 100}
+              key={task._id}
             >
               {/* <Checkbox
                   task={task}
