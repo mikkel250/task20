@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
 import axios from 'axios';
 
 

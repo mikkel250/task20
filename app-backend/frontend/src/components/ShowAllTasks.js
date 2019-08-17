@@ -42,8 +42,8 @@ function markDone(task) {
 
 
 class ShowAllTasks extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { tasks: [], filterDate: '' };
   }
     componentDidMount() {
@@ -61,7 +61,7 @@ class ShowAllTasks extends Component {
             {this.state.tasks.map(task => (
               <div
                 className="ml3 mb2 bg-light-green shadow-5 grow mw6"
-                key={task._id * 100}
+                key={task._id}
               >
                 {/* <Checkbox
                   task={task}

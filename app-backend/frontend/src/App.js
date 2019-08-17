@@ -9,8 +9,7 @@ import NavContent from './components/NavContent'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ShowAllTasks from './components/ShowAllTasks';
 import CreateTask from './components/CreateTask';
-import Calendar from 'react-calendar';
-import DateFilter from './components/DateFilter';
+import DateFilter from './components/DateFilter;'
 
   const config = {
   "navAnchor": "left",
@@ -74,12 +73,14 @@ class App extends Component {
 
   render() {
     const filteredTasks = this.state.tasks.filter(task => {
-      if (task.due <= this.state.filterChange) return task ;
+      if (task.due <= this.state.filterChange) {
+        return task;
+      }
+        
     });
 
     if (filteredTasks !== '') {
       return (
-       
         <Router>
           <Root config={config} style={{ minHeight: "100vh" }}>
             <link
@@ -93,7 +94,8 @@ class App extends Component {
                 active: <ArrowBackIosIcon />
               }}
             >
-              {/* header goes here */}
+              <h1>React Task Manager </h1>
+              
             </Header>
 
             <Nav
@@ -134,7 +136,7 @@ class App extends Component {
             <Footer>{/* footer goes here */}</Footer>
           </Root>
         </Router>
-      )
+      );
     
     
     } else {

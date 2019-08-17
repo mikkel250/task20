@@ -39,7 +39,7 @@ const NavContent = () => (
     
     <List>
         {list.map(({ primaryText, icon, route}, i) => (
-            <Link to={route} >                
+            <Link to={route} key={i}>                
                 <ListItem selected={i === 0} button >
                     <ListItemIcon>
                         <Icon>{icon}</Icon>
