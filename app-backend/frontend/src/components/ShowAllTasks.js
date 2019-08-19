@@ -62,7 +62,9 @@ class ShowAllTasks extends Component {
               className="pa3 ba b--green bg-lightest-blue"
               type="Date"
               placeholder=""
-              onChange={() => filterByDate(this.state.tasks, this.state.Date)}
+              onChange={() =>
+                filterByDate(this.state.tasks, this.state.Date)
+              }
             />
           </div>
           {this.state.tasks.map(task => (
@@ -103,14 +105,16 @@ class ShowAllTasks extends Component {
                 ID: {task._id}
               </div>
               {/* Note: if marked done, then use strikethrough font */}
-              <Button
-                className={task.done ? "strike ml4" : ""}
-                variant="outlined"
-                color="primary"
-                onClick={() => console.log("edit clicked")}
-              >
-                Edit
-              </Button>
+              <a href={`/` + task._id} target="_blank" rel="noopener noreferrer">
+                <Button
+                  className={task.done ? "strike ml4" : ""}
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => console.log("edit clicked")}
+                >
+                  Edit
+                </Button>
+              </a>
               <Button
                 className="fr"
                 variant="outlined"

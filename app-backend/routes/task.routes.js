@@ -30,7 +30,7 @@ module.exports = (app) => {
     //app.get('task/overdue', task.findAllOverdue);
 
     //retrieve a single task with taskId
-    //app.get('/task/:taskId', task.findOne);
+    app.get('/task/:taskId', task.findOne);
 
     //update a task with taskId
     app.put('/task/:taskId', task.update);
