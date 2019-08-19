@@ -46,11 +46,11 @@ class ShowAllTasks extends Component {
     super();
     this.state = { tasks: [], filterDate: '' };
   }
-    componentDidMount() {
-        fetch('/task')
-            .then(res => res.json())
-            .then(tasks => this.setState({ tasks }));
-    }
+    // componentDidMount() {
+    //     fetch('/task')
+    //         .then(res => res.json())
+    //         .then(tasks => this.setState({ tasks }));
+    // }
     
     render() {
       
@@ -61,7 +61,7 @@ class ShowAllTasks extends Component {
             {this.state.tasks.map(task => (
               <div
                 className="ml3 mb2 bg-light-green shadow-5 grow mw6"
-                key={task._id * 100}
+                key={task.id}
               >
                 {/* <Checkbox
                   task={task}

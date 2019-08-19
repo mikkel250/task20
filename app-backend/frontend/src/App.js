@@ -64,17 +64,19 @@ class App extends Component {
   componentDidMount() {
     fetch("/task")
       .then(res => res.json())
-      .then(tasks => this.setState({ tasks }));
+      .then(eachTask => this.setState({ tasks: eachTask }));
   }
 
-  onFilterByDate = event => {
+  onFilterByDate = (event) => {
     this.setState({ filterChange: event.target.value });
     console.log(event.target.value);
   };
 
   render() {
     const filteredTasks = this.state.tasks.filter(task => {
-      if (task.due <= this.state.filterChange) return task ;
+      if (task.due <= this.state.filterChange) {
+        return task;
+      }
     });
 
     if (filteredTasks !== '') {
