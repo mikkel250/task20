@@ -30,13 +30,18 @@ function markDone(task) {
    window.location.reload();
 }
 
-function filterByDate(tasks, filterDate) {
-  console.log(tasks, filterDate);
+
+//filterDate returning undefined
+function filterByDate(tasks, filterDate) { 
+  console.log(`in filterByDate. tasks: ${tasks}, filterDate: ${filterDate}`);
   const filteredTasks = tasks.filter(task => {
     if (task.due <= filterDate) {
+      console.log(`task.due: ${task.due}, filterDate: ${filterDate}`)
       return task
     }
+    
   });
+  console.log(`filteredTasks ${filteredTasks}`);
   return <ShowAllTasks tasks={filteredTasks} />
 }
 
@@ -110,7 +115,14 @@ class ShowAllTasks extends Component {
                   className={task.done ? "strike ml4" : ""}
                   variant="outlined"
                   color="primary"
-                  onClick={() => console.log(`edit clicked\nTaskId: ${task._id}\nTask: ${task}`)} //taskId is correct here, how to pass it to the edit page?
+                  onClick={
+                    () => {
+                      
+                      this.setState.taskIdToEdit = task._id;
+                      console.log(this.state.taskIdToEdit);
+                    }
+                  }
+                     //taskId is correct here, how to pass it to the edit page?
                 >
                   Edit
                 </Button>

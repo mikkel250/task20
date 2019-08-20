@@ -56,18 +56,20 @@ import Calendar from 'react-calendar';
   }
 };
   
-class App extends React.Component {
+export default class App extends React.Component {
   constructor() {
     super();
-    state = {
-         title: '',
-        content: '',
-        owner: '',
-        due: '',
-        
+    this.state = {
+      tasks: [],
+      filterChange: "",
+      taskIdToEdit: ""  
     }
-  <>
-    <Router>
+  }
+  render() {
+      
+    return (
+        
+    < Router >
       <Root config={config} style={{ minHeight: "100vh" }}>
         <link
           rel="stylesheet"
@@ -112,17 +114,18 @@ class App extends React.Component {
               )}
             />
             {/* Use component to render a predefined component */}
-            <Route exact path="/task" component={ShowAllTasks} />
+              <Route exact path="/task" component={ShowAllTasks} filteredTasks={this.state.filteredTasks}/>
             <Route exact path="/create" component={CreateTask} />
-            <Route exact path="/edit" component={EditTask} />
+              <Route exact path="/edit" component={EditTask} task={this.state.taskIdToEdit} />
             {/* <Route exact path="/teams" component={Teams} /> */}
           </Switch>
         </Content>
 
         <Footer>{/* footer goes here */}</Footer>
       </Root>
-      </Router>
-  </>
-}
-
-export default App;
+      </Router >
+            );
+    }
+  
+  
+  };

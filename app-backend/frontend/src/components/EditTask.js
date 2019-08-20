@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from "axios";
 
 
@@ -7,11 +7,11 @@ import axios from "axios";
     constructor() {
       super();
       this.state = {
-        // title: this.state.task.title,
-        // content: this.state.content,
-        // owner: this.state.owner,
-        // due: this.state.due,
-        // message: ""
+        title: this.state.title,
+        content: this.state.content,
+        owner: this.state.owner,
+        due: this.state.due,
+        message: ""
       };
 
       this.handleChange = this.handleChange.bind(this);
@@ -19,7 +19,7 @@ import axios from "axios";
     }
 
     componentDidMount() {
-      fetch(`/task/`)
+      fetch(`/task/${this.state.taskIdToEdit}`)
         .then(res => res.json())
         .then(console.log(`ComponentDidMount running. this.state: ${JSON.stringify(this.state)}`))
        // .then(tasks => this.setState({ tasks }));
