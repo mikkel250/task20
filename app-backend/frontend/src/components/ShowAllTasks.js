@@ -70,7 +70,7 @@ class ShowAllTasks extends Component {
           {this.state.tasks.map(task => (
             <div
               className="ml3 mb2 bg-light-green shadow-5 grow mw6"
-              key={task._id * 100}
+              key={task._id}
             >
               {/* <Checkbox
                   task={task}
@@ -105,12 +105,12 @@ class ShowAllTasks extends Component {
                 ID: {task._id}
               </div>
               {/* Note: if marked done, then use strikethrough font */}
-              <a href={`/` + task._id} target="_blank" rel="noopener noreferrer">
+              <a href={`/edit`} target="_blank" rel="noopener noreferrer">
                 <Button
                   className={task.done ? "strike ml4" : ""}
                   variant="outlined"
                   color="primary"
-                  onClick={() => console.log("edit clicked")}
+                  onClick={() => console.log(`edit clicked\nTaskId: ${task._id}\nTask: ${task}`)} //taskId is correct here, how to pass it to the edit page?
                 >
                   Edit
                 </Button>
