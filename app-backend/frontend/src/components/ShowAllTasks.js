@@ -115,10 +115,10 @@ class ShowAllTasks extends Component {
                   className={task.done ? "strike ml4" : ""}
                   variant="outlined"
                   color="primary"
+                  thisTaskID={task._id}
                   onClick={
-                    () => {
+                    () => {                      
                       
-                      this.setState.taskIdToEdit = task._id;
                       console.log(this.state.taskIdToEdit);
                     }
                   }
